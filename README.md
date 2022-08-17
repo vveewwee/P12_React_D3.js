@@ -27,6 +27,7 @@ $ git clone https://github.com/vveewwee/P12_React_D3.js <name of your choice>
 ---
 
 > In order to retrieve the Data, we're suggesting to clone the repo in the same folder as the FrontEnd repo.
+>Follow the instructions in the README file.
 
 ```npm
 $ git clone https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard
