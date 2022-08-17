@@ -10,17 +10,13 @@
 
 # Installation
 
----
-
 > You will need to have installed [Node.js](https://nodejs.org/en/).
 > (In case of a doubt `npm --version` will clarify the situation).
 
 ## Front-End Cloning
 
----
-
 ```npm
-git clone https://github.com/vveewwee/P12_React_D3.js <name of your choice>
+$ git clone https://github.com/vveewwee/P12_React_D3.js <name of your choice>
 ```
 
 ## Back-End Cloning
@@ -35,8 +31,6 @@ $ git clone https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashbo
 
 ## Dependencies
 
----
-
 ```npm
 $ npm install --save-dev
 ```
@@ -45,22 +39,20 @@ $ npm install --save-dev
 $ yarn install
 ```
 
-## Start
-
----
-
-In the project directory, you can run:
-
+## Launch
+```diff
+!In the project directory, run:
+```
 ```npm
 $ npm start
 ```
+```diff
+!Runs the app in the development mode.\
+!Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
+!The page will reload when you make changes.\
+!You may also see any lint errors in the console.
+```
 > The right path for the time being is [here](http://localhost:3000/user)
 
 ## Launching the Doc
@@ -69,6 +61,7 @@ You may also see any lint errors in the console.
 
 Open with Live Server, or Lauch the docs/index.html file on your browser
 `http://127.0.0.1:5501/docs`
+Or simply check it directly from the GitHub repo, on the docs folder.
 
 ---
 
