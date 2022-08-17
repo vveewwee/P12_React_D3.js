@@ -1,5 +1,8 @@
 ![logo](/src/assets/logo.png)
 
+![GitHub All Releases](https://img.shields.io/github/languages/top/vveewwee/P12_React_D3.js?color=%23FF0101&style=flat-square)
+
+![GitHub top language](https://img.shields.io/github/languages/top/vveewwee/P12_React_D3.js?label=react&logo=react)
 # SportSee Application
 
 ---
