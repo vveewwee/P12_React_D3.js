@@ -1,3 +1,32 @@
 .bars:hover {
     opacity: 0.66;
 }
+
+
+.recharts-polar-angle-axis-tick{
+    font-size: 10px;
+    font-weight:200;
+}
+
+.recharts-polar-grid-angle{
+    opacity:0;
+}
+
+.recharts-line-curve:hover{
+    opacity:0.8;
+} 
+
+.recharts-cartesian-axis-tick-value{
+    font-size:12px;
+}
+
+.recharts-cartesian-grid-vertical{
+    opacity:0;
+}
+.recharts-responsive-container{
+    margin:2%;
+}
+
+.recharts-tooltip-cursor{
+    background-blend-mode: screen;
+}

@@ -1,21 +1,21 @@
-/**
- * This functional Component will create an svg graph chart
- * with an API data request
- * 
- * @component
- * @example 
- * 
- * const width = 300
- * const height = 300
- * return <ChartBar width={width} height={height}/>
- */
-
 import * as d3 from 'd3';
 import {useEffect, useState, useRef, Fragment} from 'react';
 import { user_activity as activity } from '../../mock_data/data';
 import colors from '../../style/colors';
 import './charts.css'
 import PropTypes from 'prop-types';
+
+/**
+ * This functional Component will create an svg graph chart
+ * with an API data request
+ * 
+ * @param {number} width
+ * @param {number} height
+ * @example 
+ * const width = 200
+ * const height = 300
+ * return <ChartBar width={width} height={height}/>
+ */
 
 export default function ChartBar(props){
   const {width, height} = props;
@@ -57,12 +57,13 @@ export default function ChartBar(props){
       .range([0, width - margin.right]);
 
     const xAxis = d3.axisBottom(x1Scale)
-      .ticks(data.length + 1).tickSize(0).tickPadding(10)
+      .ticks(data.length + 1).tickSize(0);
+      // .tickPadding(10)
 
     //append it to the svg and position it on the bottom with transform attribute
     svg
       .append("g")
-      .attr('transform', `translate(0,${height-margin.bottom})`)
+      .attr('transform', `translate(-20,${height-margin.bottom})`)
       .call(xAxis)
         .style('opacity', "0.3")
       //  .select('.domain').remove();
@@ -103,7 +104,7 @@ export default function ChartBar(props){
     //create the yscale that will hold values as shown on the mock
     const y3Scale = d3.scaleLinear()
       .domain([69, 71])
-      .range([height-margin.bottom, 100]);
+      .range([height-margin.bottom, 60]);
 
     const y3Axis = d3.axisRight(y3Scale).ticks(2).tickSize(-width).tickPadding(10);
 
@@ -115,11 +116,13 @@ export default function ChartBar(props){
   
 
 //TODO just for fun, to be removed
+// eslint-disable-next-line
     const color = d3.scaleLinear()
       .domain([0,450])
       .range(["#E674EF", "#F7E499"])
 
     //create the rectangles for displaying the calories
+  // eslint-disable-next-line
     const calobars = svg
       .selectAll('rect')
       .data(data)
@@ -135,6 +138,7 @@ export default function ChartBar(props){
         .attr("fill", `${colors.chartRed}`);
 
     //create the rectangles for displaying the kilograms
+  // eslint-disable-next-line
     const kilobars = svg
 	    .selectAll("circle")
       .attr("fill", "red")
@@ -151,14 +155,14 @@ export default function ChartBar(props){
 		    .attr('class', 'bars')
         .attr('fill', `${colors.chartBlack}`)
         // .attr('fill', (d,i) => color(i * d.kilogram));
-        
+// eslint-disable-next-line        
       const kilobarLabel = svg
         .append('circle')
         .attr('cx',300)
         .attr('cy', margin.bottom)
         .attr('r', 4)
         .attr('fill', "#E60000")
-       
+// eslint-disable-next-line       
       const textKg = svg
         .append('text')
         .text('Poids')
@@ -166,14 +170,14 @@ export default function ChartBar(props){
         .attr('y', margin.bottom + 5)
         .style('font-size', "12px")
         .style('font-weight', "200")
-
+// eslint-disable-next-line
       const calobarLabel = svg
         .append('circle')
         .attr('cx',360)
         .attr('cy', margin.bottom)
         .attr('r', 4)
         .attr('fill', "black")
-
+// eslint-disable-next-line
       const textCal= svg
         .append('text')
         .text('Calories Brulées (kCal)')
@@ -181,7 +185,7 @@ export default function ChartBar(props){
         .attr('y', margin.bottom + 5)
         .style('font-size', "12px")
         .style('font-weight', "200")
-
+// eslint-disable-next-line
       const label = svg
         .append('text')
         .text('Activité quotidienne')

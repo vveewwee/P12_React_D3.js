@@ -1,115 +1,79 @@
 import React from 'react';
-import styled from 'styled-components';
 import NutriCard from '../NutriCard';
 import { nutritionIcons } from '../../assets/icons';
-import { user_main_data } from '../../mock_data/data';
-import BarChart from '../Charts/BarChart';
-import LineChart from '../Charts/LineChart';
+import {
+    user_main_data,
+    user_performance as perf,
+    user_average_session as session,
+} from '../../mock_data/data';
 import colors from '../../style/colors';
-import TimeSeries from '../Charts/TimeSeries';
-import Histogram from '../Charts/Histogram';
-//import { useParams } from 'react-router-dom';
-//import axios from 'axios';
+// import { useParams } from 'react-router-dom';
 import ChartBar from '../Charts/ChartBar';
+import RadarGraph from '../Charts/RadarGraph';
+import RadialGraph from '../Charts/RadialGraph';
+import LineGraph from '../Charts/LineGraph';
 
-const Container = styled.div`
-    width: 80%;
-    position: absolute;
-    left: 110px;
-    display: flex;
-    flex-direction: column;
-    padding: 2%;
-`;
+import {
+    Container,
+    HeaderTitle,
+    Greeting,
+    MotivationText,
+    UserContainer,
+    CardHolder,
+    GraphContainer,
+    MainChartContainer,
+    MiniChartContainer,
+    RadialChartContainer,
+    LineChartContainer,
+    ChartContainer,
+    RadarChartContainer,
+} from '../StyledComponents';
 
-const HeaderTitle = styled.header`
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-`;
+/**
+ * The dashboard material, containing all the users infos in graphs.
+ * @param {number} id
+ * @returns {JSX.element}
+ */
 
-const Greeting = styled.div`
-    display: flex;
-    flex-flow: row nowrap;
-`;
-
-const MotivationText = styled.p`
-    font-weight: 400;
-    font-size: 18px;
-    margin-top: 0;
-`;
-
-const UserContainer = styled.div`
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-`;
-
-const CardHolder = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: inherit;
-    align-items: center;
-    width: 30%;
-`;
-
-const GraphContainer = styled.div`
-    width: 70%;
-    display: flex;
-    flex-direction: column;
-`;
-
-const MainChartContainer = styled.div`
-    width: 100%;
-    margin-bottom: 2%;
-`;
-const MiniChartContainer = styled.div`
-    display: flex;
-    flex-flow: row nowrap;
-    align-items: space-between;
-`;
-const ChartContainer = styled.div`
-    background-color: ${colors.cardC};
-    border-radius: 6px;
-    width: 100%;
-`;
-
-export default function Profile() {
+export default function Dashboard({ userData }) {
+    //when using the mock_data:
     const name = user_main_data[0].userInfos.firstName;
-    /*
-    const [loading, setLoading] = useState(true);
-    const [userData, setUserData] = useState({});
-    const [error, setError] = useState(false);
-    const {id} = useParams();
+    const score = user_main_data[0].todayScore;
 
-    useEffect(() => {
-      const getData = async ()=> {
-        try{
-            const responce = await axios.get(`http://localhost:3000/user/${id}`);
-            const userKeyData = responce.data.data.keyData; 
-        }catch(error){
-            setError(true)
-        }finally{
-            setLoading(false)
-        }
-      }
-    
-      return () => {
-        second
-      }
-      getData();
-    }, [])
-    
-*/
-    //console.log(userKeyData[0].keyData[0]);
-    //const { keyData } = userKeyData[0];
-    // console.log(typeof keyData);
+    // const [loading, setLoading] = useState(true);
+    // console.log('userData l44', userData);
+    //when calling the api:
+    const sname = userData.data.userInfos.firstName;
+    const stession = userData.session.sessions;
+    const sperf = userData.perf;
+    const sscore = userData.data.score;
+    console.log('session:', stession);
+    console.log(sname);
+    console.log('sperf l53', sperf);
+    console.log(sscore);
+
+    function fixData(array) {
+        let newData = [];
+        let days = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
+        array.map((d, i) => {
+            console.log('arraymap:', d.sessionLength);
+            newData.push({ day: days[i], time: d.sessionLength });
+        });
+        return newData;
+    }
+    const info = fixData(stession);
+    console.log('info', info);
     return (
         <Container>
             <HeaderTitle>
                 <Greeting>
-                    <h1>Bonjour</h1>
-                    <h1 style={{ color: `${colors.primary}` }}> {name}</h1>
+                    <h1>
+                        Bonjour
+                        <span style={{ color: `${colors.primary}` }}>
+                            {' '}
+                            {name}
+                        </span>
+                    </h1>
                 </Greeting>
                 <div>
                     <MotivationText>
@@ -121,18 +85,34 @@ export default function Profile() {
                 <GraphContainer>
                     <MainChartContainer>
                         <ChartContainer>
-                            <ChartBar height={300} width={500} />
+                            <ChartBar height={200} width={650} />
                         </ChartContainer>
                     </MainChartContainer>
-                    {/* <MiniChartContainer>
-                        <ChartContainer>
-                            <LineChart height={100} width={100} />
-                        </ChartContainer>
-                        <ChartContainer>
-                            <TimeSeries height={100} width={100} />
-                        </ChartContainer>
-                        <ChartContainer></ChartContainer>
-                    </MiniChartContainer> */}
+                    <MiniChartContainer>
+                        <LineChartContainer>
+                            <LineGraph
+                                width={'100%'}
+                                height={'100%'}
+                                data={session}
+                                drata={stession}
+                            />
+                        </LineChartContainer>
+
+                        <RadarChartContainer>
+                            <RadarGraph
+                                height={'100%'}
+                                width={'100%'}
+                                data={perf}
+                            />
+                        </RadarChartContainer>
+                        <RadialChartContainer>
+                            <RadialGraph
+                                height={'100%'}
+                                width={'100%'}
+                                data={score}
+                            />
+                        </RadialChartContainer>
+                    </MiniChartContainer>
                 </GraphContainer>
                 <CardHolder>
                     {nutritionIcons.map((icons, index) => (
