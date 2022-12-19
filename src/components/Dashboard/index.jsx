@@ -3,8 +3,8 @@ import NutriCard from '../NutriCard';
 import { nutritionIcons } from '../../assets/icons';
 import {
     user_main_data,
-    user_performance as perf,
-    user_average_session as session,
+    // user_performance as sperf,
+    // user_average_session as stession,
 } from '../../mock_data/data';
 import colors from '../../style/colors';
 // import { useParams } from 'react-router-dom';
@@ -36,7 +36,7 @@ import {
  */
 
 export default function Dashboard({ userData }) {
-    // console.log("UserData in Dashboard:", userData);
+    console.log("UserData in Dashboard:", userData);
     //when using the mock_data:
     // const name = user_main_data[0].userInfos.firstName;
     const score = user_main_data[0].todayScore;
@@ -44,24 +44,11 @@ export default function Dashboard({ userData }) {
     // console.log('userData l44', userData);
     //when calling the api:
     const sname = userData.data.userInfos.firstName;
-    const stession = userData.session.sessions;
-    const sperf = userData.perf;
-    const sscore = userData.data.score;
-    console.log('session:', stession);
-    console.log(sname);
-    console.log('sperf l53', sperf);
-    console.log(sscore);
+    const session = userData.session.sessions;
+    const perf = userData.perf;
+    const sscore = userData.data.todayScore;
+    const activity = userData.activity;
 
-    function fixData(array) {
-        let newData = [];
-        let days = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
-        newData = array.map((d, i) => {
-            return newData.push({ day: days[i], time: d.sessionLength });
-        });
-        return newData;
-    }
-    const info = fixData(session);
-    console.log('info', info);
     return (
         <Container>
             <HeaderTitle>
@@ -84,7 +71,7 @@ export default function Dashboard({ userData }) {
                 <GraphContainer>
                     <MainChartContainer>
                         <ChartContainer>
-                            <ChartBar height={200} width={650} />
+                            <ChartBar height={200} width={650} info={activity}/>
                         </ChartContainer>
                     </MainChartContainer>
                     <MiniChartContainer>
@@ -107,7 +94,7 @@ export default function Dashboard({ userData }) {
                             <RadialGraph
                                 height={'100%'}
                                 width={'100%'}
-                                data={score}
+                                data={sscore}
                             />
                         </RadialChartContainer>
                     </MiniChartContainer>

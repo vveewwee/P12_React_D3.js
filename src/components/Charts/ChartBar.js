@@ -18,7 +18,7 @@ import PropTypes from 'prop-types';
  */
 
 export default function ChartBar(props){
-  const {width, height} = props;
+  const {width, height, info} = props;
   const margin = {top: 0, right: 20, bottom: 20, left: 20};
 	const [data, setData] = useState([]);
   const svgRef = useRef();
@@ -32,7 +32,9 @@ export default function ChartBar(props){
 
   //for the moment it uses the mocked data to generate data
   const generateData = () => {
-    const chartData = activity[0].sessions;
+    // const chartData = activity[0].sessions;
+    const chartData = info.sessions;
+    console.log("chartData:", chartData);
     setData(chartData);
   }
   

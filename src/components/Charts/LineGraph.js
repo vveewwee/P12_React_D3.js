@@ -34,10 +34,8 @@ export default function LineGraph(props) {
         return newData;
     };
 
-
-    const info = fixData(data[0].sessions);
-    // const sinfo = fixData(drata);
-    // console.log("info in Linegraph",sinfo);
+    // const info = fixData(data[0].sessions);
+    const info = fixData(data);
 
     var tooltip;
     const CustomTooltip = ({ active, payload }) => {

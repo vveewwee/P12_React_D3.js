@@ -24,8 +24,10 @@ export default function RadarGraph(props){
       return newArray
     }
 
-    const info = fixData(data[0].data, data[0].kind);
-
+    //mock_data formating
+    // const info = fixData(data[0].data, data[0].kind);
+    //API data
+    const info = fixData(data.data, data.kind);
   
     return (
         <ResponsiveContainer width={width} height={height}>
