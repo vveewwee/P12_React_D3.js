@@ -1,10 +1,11 @@
 import React, { Fragment } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Provider from '../Provider';
+import Provider from '../provider';
 import Error from '../pages/Error';
 
 export default function AppRouter() {
     const id = 18;
+    console.log("id:", id);
     return (
         <Fragment>
             <Routes>

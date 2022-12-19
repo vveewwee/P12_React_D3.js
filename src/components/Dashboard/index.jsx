@@ -36,34 +36,32 @@ import {
  */
 
 export default function Dashboard({ userData }) {
-    console.log("UserData in Dashboard:", userData);
+    // console.log("UserData in Dashboard:", userData);
     //when using the mock_data:
-    const name = user_main_data[0].userInfos.firstName;
+    // const name = user_main_data[0].userInfos.firstName;
     const score = user_main_data[0].todayScore;
 
-    // const [loading, setLoading] = useState(true);
     // console.log('userData l44', userData);
     //when calling the api:
-    // const sname = userData.data.userInfos.firstName;
-    // const stession = userData.session.sessions;
-    // const sperf = userData.perf;
-    // const sscore = userData.data.score;
-    // console.log('session:', stession);
-    // console.log(sname);
-    // console.log('sperf l53', sperf);
-    // console.log(sscore);
+    const sname = userData.data.userInfos.firstName;
+    const stession = userData.session.sessions;
+    const sperf = userData.perf;
+    const sscore = userData.data.score;
+    console.log('session:', stession);
+    console.log(sname);
+    console.log('sperf l53', sperf);
+    console.log(sscore);
 
     function fixData(array) {
         let newData = [];
         let days = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
-        array.map((d, i) => {
-            console.log('arraymap:', d.sessionLength);
-            newData.push({ day: days[i], time: d.sessionLength });
+        newData = array.map((d, i) => {
+            return newData.push({ day: days[i], time: d.sessionLength });
         });
         return newData;
     }
     const info = fixData(session);
-    // console.log('info', info);
+    console.log('info', info);
     return (
         <Container>
             <HeaderTitle>
@@ -72,7 +70,7 @@ export default function Dashboard({ userData }) {
                         Bonjour
                         <span style={{ color: `${colors.primary}` }}>
                             {' '}
-                            {name}
+                            {sname}
                         </span>
                     </h1>
                 </Greeting>
