@@ -50,6 +50,7 @@ export const GraphContainer = styled.div`
     width: 70%;
     display: flex;
     flex-direction: column;
+    min-width:680px;
 `;
 
 export const MainChartContainer = styled.div`

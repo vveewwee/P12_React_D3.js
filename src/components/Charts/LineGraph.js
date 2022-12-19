@@ -23,7 +23,8 @@ padding-left:10px;
  */
 
 export default function LineGraph(props) {
-    const {width, height, data, drata} = props;
+    const {width, height, data} = props;
+    
     function fixData(array){
         let newData = [];
         let days = ['M','T','W','T','F','S','S'];
@@ -35,8 +36,8 @@ export default function LineGraph(props) {
 
 
     const info = fixData(data[0].sessions);
-    const sinfo = fixData(drata);
-    console.log("info in Linegraph",sinfo);
+    // const sinfo = fixData(drata);
+    // console.log("info in Linegraph",sinfo);
 
     var tooltip;
     const CustomTooltip = ({ active, payload }) => {
