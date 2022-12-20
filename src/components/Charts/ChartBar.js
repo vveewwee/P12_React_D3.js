@@ -1,6 +1,6 @@
 import * as d3 from 'd3';
 import {useEffect, useState, useRef, Fragment} from 'react';
-import { user_activity as activity } from '../../mock_data/data';
+// import { user_activity as activity } from '../../mock_data/data';
 import colors from '../../style/colors';
 import './charts.css'
 import PropTypes from 'prop-types';
@@ -18,7 +18,7 @@ import PropTypes from 'prop-types';
  */
 
 export default function ChartBar(props){
-  const {width, height, info} = props;
+  const {width, height, activity} = props;
   const margin = {top: 0, right: 20, bottom: 20, left: 20};
 	const [data, setData] = useState([]);
   const svgRef = useRef();
@@ -28,12 +28,13 @@ export default function ChartBar(props){
   	data.length > 0 ?
   		drawChart() :
         generateData()
+        //eslint-disable-next-line
   },[data])
 
   //for the moment it uses the mocked data to generate data
   const generateData = () => {
     // const chartData = activity[0].sessions;
-    const chartData = info.sessions;
+    const chartData = activity.sessions;
     console.log("chartData:", chartData);
     setData(chartData);
   }

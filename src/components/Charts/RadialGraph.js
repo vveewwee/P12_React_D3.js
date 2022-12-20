@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 import colors from '../../style/colors';
-import { RadialBarChart, RadialBar, ResponsiveContainer, PolarAngleAxis, Legend } from 'recharts';
+import { RadialBarChart, RadialBar, ResponsiveContainer, PolarAngleAxis } from 'recharts';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import './charts.css';

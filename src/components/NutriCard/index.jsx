@@ -13,7 +13,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { Fragment } from 'react';
 import styled from 'styled-components';
 import colors from '../../style/colors';
-import { user_main_data } from '../../mock_data/data';
+//import { user_main_data } from '../../mock_data/data';
 
 const Container = styled.div`
     border-radius: 15px;
@@ -59,26 +59,32 @@ const LightText = styled.p`
     font-weight: 200;
 `;
 
-export default function NutriCard(nutricon) {
-    const backCol = `${nutricon.nutricon.background}`;
-    const col = `${nutricon.nutricon.color}`;
+export default function NutriCard({nutricon, data}) {
+    const backCol = `${nutricon.background}`;
+    const col = `${nutricon.color}`;
+
+    console.log("count[nutri]",data[nutricon.keyData]);
     return (
         <Fragment>
             <Container>
                 <IconCont style={{ backgroundColor: backCol, color: col }}>
                     <FontAwesomeIcon
-                        key={`nutricon-${nutricon.index}-${nutricon.nutricon.color}`}
-                        icon={nutricon.nutricon.icon}
+                        key={`nutricon-${nutricon.index}-${nutricon.color}`}
+                        icon={nutricon.icon}
                     />
                 </IconCont>
                 <NutriCont>
                     <BoldText>
-                        {user_main_data[0].keyData[nutricon.nutricon.keyData]}
-                        {nutricon.nutricon.unit}
+                        {data[nutricon.keyData]}
+                        {nutricon.unit}
                     </BoldText>
-                    <LightText>{nutricon.nutricon.val}</LightText>
+                    <LightText>{nutricon.val}</LightText>
                 </NutriCont>
             </Container>
         </Fragment>
     );
 }
+
+
+
+//{user_main_data[0].keyData[nutricon.nutricon.keyData]}

@@ -28,9 +28,10 @@ export default function LineGraph(props) {
     function fixData(array){
         let newData = [];
         let days = ['M','T','W','T','F','S','S'];
-        array.map((d,i)=>{
+        array.forEach((d,i) => {
             newData.push({day: days[i], time: d.sessionLength});
-        })
+        }
+        )
         return newData;
     };
 

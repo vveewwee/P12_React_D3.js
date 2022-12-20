@@ -8,7 +8,7 @@ import './charts.css';
  * Creation of the Radar Chart from the Recharts charting Lib
  * @param {string} width
  * @param {string} height
- * @param {array} data 
+ * @param {object} data 
  * @returns {JSX.Element} radar chart component
  */
 
@@ -18,9 +18,9 @@ export default function RadarGraph(props){
   
     function fixData(firstElement, secondElement){
       let newArray = [];
-      firstElement.map( (d, i) => { 
+      firstElement.forEach( (d, i) => {
         newArray.push({value: d.value, kind:secondElement[i + 1]})
-      })
+    })
       return newArray
     }
 
@@ -41,7 +41,7 @@ export default function RadarGraph(props){
   }
 
 RadarGraph.propTypes = {
-  data :PropTypes.array.isRequired,
+  data :PropTypes.object.isRequired,
   width: PropTypes.string,
   height: PropTypes.string
 }

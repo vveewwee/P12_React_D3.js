@@ -1,11 +1,11 @@
 import React from 'react';
 import NutriCard from '../NutriCard';
 import { nutritionIcons } from '../../assets/icons';
-import {
-    user_main_data,
-    // user_performance as sperf,
-    // user_average_session as stession,
-} from '../../mock_data/data';
+// import {
+//     user_main_data,
+//     user_performance as sperf,
+//     user_average_session as stession,
+// } from '../../mock_data/data';
 import colors from '../../style/colors';
 // import { useParams } from 'react-router-dom';
 import ChartBar from '../Charts/ChartBar';
@@ -39,7 +39,7 @@ export default function Dashboard({ userData }) {
     console.log("UserData in Dashboard:", userData);
     //when using the mock_data:
     // const name = user_main_data[0].userInfos.firstName;
-    const score = user_main_data[0].todayScore;
+    // const score = user_main_data[0].todayScore;
 
     // console.log('userData l44', userData);
     //when calling the api:
@@ -48,6 +48,8 @@ export default function Dashboard({ userData }) {
     const perf = userData.perf;
     const sscore = userData.data.todayScore;
     const activity = userData.activity;
+    const count = userData.data.keyData;
+    console.log("count", count);
 
     return (
         <Container>
@@ -105,6 +107,7 @@ export default function Dashboard({ userData }) {
                             key={`nutricard-${index}`}
                             index={index}
                             nutricon={icons}
+                            data={count}
                         />
                     ))}
                 </CardHolder>
