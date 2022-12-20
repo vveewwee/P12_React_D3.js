@@ -38,7 +38,15 @@ $ git clone https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashbo
 ```npm
 $ npm install --save-dev
 ```
-
+```npm
+$ npm install axios
+```
+```npm
+$ npm install d3
+```
+```npm
+$ npm install recharts
+```
 ```npm
 $ yarn install
 ```
